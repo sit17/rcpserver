@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <base href="localhost://localhost:6988/">
+    <title>My WebSocket</title>
+</head>
+
+<body>
+Welcome<br/>
+<input id="text" type="text"/>
+<button onclick="send()">send</button>
+<button onclick="sendenter()">enter channel</button>
+<button onclick="sendguest()">guest enter channel</button>
+<button onclick="sendgift()">give gift</button>
+<button onclick="closeWebSocket()">Close</button>
+<div id="message">
+</div>
+</body>
+
+<script type="text/javascript">
+    var websocket = null;
+
+    //锟叫断碉拷前锟斤拷锟斤拷锟斤拷欠锟街э拷锟絎ebSocket
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:6988/websocket");
+    }
+    else {
+        alert('Not support websocket')
+    }
+
+    //锟斤拷锟接凤拷锟斤拷锟斤拷锟斤拷幕氐锟斤拷锟斤拷锟�
+    websocket.onerror = function () {
+        setMessageInnerHTML("error");
+    };
+
+    //锟斤拷锟接成癸拷锟斤拷锟斤拷锟侥回碉拷锟斤拷锟斤拷
+    websocket.onopen = function (event) {
+        setMessageInnerHTML("open");
+    }
+
+    //锟斤拷锟秸碉拷锟斤拷息锟侥回碉拷锟斤拷锟斤拷
+    websocket.onmessage = function (event) {
+        setMessageInnerHTML(event.data);
+    }
+
+    //锟斤拷锟接关闭的回碉拷锟斤拷锟斤拷
+    websocket.onclose = function () {
+        setMessageInnerHTML("close");
+    }
+
+    //锟斤拷锟斤拷锟斤拷锟节关憋拷锟铰硷拷锟斤拷锟斤拷锟斤拷锟节关憋拷时锟斤拷锟斤拷锟斤拷去锟截憋拷websocket锟斤拷锟接ｏ拷锟斤拷止锟斤拷锟接伙拷没锟较匡拷锟酵关闭达拷锟节ｏ拷server锟剿伙拷锟斤拷锟届常锟斤拷
+    window.onbeforeunload = function () {
+        websocket.close();
+    }
+
+    //锟斤拷锟斤拷息锟斤拷示锟斤拷锟斤拷页锟斤拷
+    function setMessageInnerHTML(innerHTML) {
+        document.getElementById('message').innerHTML += innerHTML + '<br/>';
+    }
+
+    //锟截憋拷锟斤拷锟斤拷
+    function closeWebSocket() {
+        websocket.close();
+    }
+
+    //锟斤拷锟斤拷锟斤拷息
+    function send() {
+        var message = document.getElementById('text').value;
+        websocket.send(message);
+    }
+        //锟斤拷锟斤拷锟斤拷息
+    function sendenter() {
+        var message = '{"cmd":"enter","params":{"accId":"d9e40973589a42289d54bdb8d25f73fa","token":"bbd6c872a7cfc3fc904c3595953fa8a6","device":"3","cId":"4158bd2d6b0a46c6890d175851e750b8","giftVersion":"3bf13d71ce2d4677agt1654d1ae5ee8a","mountVersion":"3bf13d71ce2d4677agt1654d1ae5ee8a"}}';
+        websocket.send(message);
+    }
+        //锟斤拷锟斤拷锟斤拷息
+    function sendguest() {
+        var message = '{"cmd":"guest","params":{"device":"3","cId":"0248bad961fc455492bc66dea85f28a1","giftVersion":"3bf13d71ce2d4677agt1654d1ae5ee8a","mountVersion":"3bf13d71ce2d4677agt1654d1ae5ee8a"}}';
+        websocket.send(message);
+    }
+            //锟斤拷锟斤拷锟斤拷息
+    function sendgift() {
+        var message = '{"cmd":"gift","params":{"cId":"0248bad961fc455492bc66dea85f28a1","id":"1","ct":"1","ctis":1}}';
+        websocket.send(message);
+    }
+</script>
+</html>

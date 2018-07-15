@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=sqljdbc42.jar -Dpackaging=jar -DgroupId=com.microsoft.sqlserver -DartifactId=sqljdbc42 -Dversion=4.2
+
+
+mvn install:install-file -Dfile=alipay-sdk-java20170209153223.jar -Dpackaging=jar -DgroupId=com.alipay -DartifactId=sdk-java -Dversion=20170209153223

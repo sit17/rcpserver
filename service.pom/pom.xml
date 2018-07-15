@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.i5i58</groupId>
+  <artifactId>service.pom</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>../common.util</module>
+  	<module>../common.data</module>
+  	<module>../common.service</module>
+  	<module>../common.util.web</module>
+  	<module>../common</module>
+  	<module>../api.constants</module>
+  	<module>../apis</module>
+  	<module>../yunxin</module>
+  	<module>../zego</module>
+  	<module>../service</module>
+  	<module>../restService</module>
+  	<module>../androidRestService</module>
+  	<module>../androidService</module>
+  	<module>../gameRestService</module>
+  	<module>../gameService</module>
+  	<module>../superRestService</module>
+  	<module>../superService</module>
+  	<module>../webSocketService</module>
+  	<module>../wechatRestService</module>
+  	<module>../umengpush</module>
+  	<module>../broadcastService</module>
+  </modules>
+</project>
